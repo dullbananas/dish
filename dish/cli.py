@@ -1,5 +1,6 @@
 import click
 from . import __version__
+from .interpreter import Interpreter
 
 
 @click.command()
@@ -12,4 +13,10 @@ def main(ctx, script):
 	
 	GitHub repository: https://github.com/dullbananas/dish
 	'''
-	print(f'Script is a tty: {script.isatty()}')
+	interactive = script.isatty()
+	interpreter = Interpreter(ctx)
+	
+	while True:
+		if interactive:
+			click.echo('$ ', nl=False)
+		interpreter.feed(script.readline())
