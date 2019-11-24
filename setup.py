@@ -26,6 +26,8 @@ setup(
 	
 	packages=['dish'],
 	install_requires=[
+		'click',
+		'ansicolors',
 	],
 	python_requires='>=3.7',
 	
