@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         python${{ matrix.python-version }} -m pip install --upgrade pip
-        ./setup.py install
+        ./setup.py install --force
       #  pip install -r requirements.txt
     - name: Lint with flake8
       run: |
