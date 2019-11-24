@@ -1,0 +1,4 @@
+#!/usr/bin/env dish
+echo "Hello world"
+echo "These are the contents of the current directory:"
+ls --color

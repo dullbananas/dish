@@ -6,7 +6,7 @@ from .interpreter import Interpreter
 @click.command()
 @click.version_option(version=__version__, prog_name='Dish shell')
 @click.argument('script', type=click.File('r'), default='-')
-@click.pass_context # ctx is the Dish object
+@click.pass_context # ctx.obj is the Dish object
 def main(ctx, script):
 	'''Runs SCRIPT as a Dish shell script, or runs an interactive shell if it is
 	not specified.
@@ -18,5 +18,6 @@ def main(ctx, script):
 	
 	while True:
 		if interactive:
-			click.echo('$ ', nl=False)
+			prompt = ctx.obj.config['PS1']
+			click.echo(prompt, nl=False)
 		interpreter.feed(script.readline())
