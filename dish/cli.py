@@ -17,7 +17,7 @@ def main(ctx, script):
 	interpreter = Interpreter(ctx)
 	
 	while True:
+		prompt = ctx.obj.generate_prompt('PS1')
 		if interactive:
-			prompt = ctx.obj.config['PS1']
 			click.echo(prompt, nl=False)
 		interpreter.feed(script.readline())
