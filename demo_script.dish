@@ -1,4 +1,7 @@
 #!/usr/bin/env dish
+
+# This script lists the contents of the current directory.
+
 echo "Hello world"
 echo "These are the contents of the current directory:"
 ls --color

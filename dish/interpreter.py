@@ -11,10 +11,16 @@ class Interpreter:
 		# Handle exit command or EOF
 		if line in ('', 'exit\n'):
 			self.ctx.exit()
+		# Blank lines
+		elif line.strip() == '':
+			return
 		# Print debug information
 		elif line == 'debug\n':
 			click.echo('Configuration values:')
 			for key, val in self.ctx.obj.config.items():
 				click.echo(f'  {key} = {repr(val)}')
+		# Comments
+		elif line.strip()[0] == '#':
+			return
 		else:
 			os.system(line)
