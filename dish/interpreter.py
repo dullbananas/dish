@@ -1,5 +1,6 @@
 import os
 import click
+from . import procs
 
 
 class Interpreter:
@@ -29,4 +30,4 @@ class Interpreter:
 		elif line.strip()[0] == '#':
 			return
 		else:
-			os.system(line)
+			procs.run_line(line)
