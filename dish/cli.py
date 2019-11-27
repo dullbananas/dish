@@ -1,4 +1,5 @@
 import click
+import os
 from . import __version__
 from .interpreter import Interpreter
 
@@ -10,14 +11,28 @@ from .interpreter import Interpreter
 def main(ctx, script):
 	'''Runs SCRIPT as a Dish shell script, or runs an interactive shell if it is
 	not specified.
-	
+
 	GitHub repository: https://github.com/dullbananas/dish
 	'''
 	interactive = script.isatty()
 	interpreter = Interpreter(ctx)
-	
-	while True:
-		prompt = ctx.obj.generate_prompt('PS1')
-		if interactive:
-			click.echo(prompt, nl=False)
-		interpreter.feed(script.readline())
+
+	if interactive:
+		from prompt_toolkit import PromptSession, ANSI, print_formatted_text
+		from prompt_toolkit.history import FileHistory
+
+		history_path = os.path.expanduser('~/.dish-history')
+		open(history_path, 'a').close()
+		psession = PromptSession(
+			history=FileHistory(history_path),
+			mouse_support=True,
+		)
+
+		while True:
+			prompt = ANSI(ctx.obj.generate_prompt('PS1'))
+			line = psession.prompt(prompt)
+			interpreter.feed(line)
+
+	else:
+		while True:
+			interpreter.feed(script.readline())
