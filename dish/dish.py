@@ -4,6 +4,7 @@ from xml.parsers.expat import ParserCreate
 
 DEFAULT_CONFIG = {
 	'PS1': '$ ',
+	'ALIASES': {},
 }
 
 
