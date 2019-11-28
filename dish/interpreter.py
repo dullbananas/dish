@@ -24,11 +24,17 @@ class Interpreter:
 				click.echo(f'  {key} = {repr(val)}')
 		# cd
 		elif line.startswith('cd '):
-			dirname = line[3:].strip()
-			os.chdir(os.path.expanduser(dirname))
+			try:
+				dirname = line[3:].strip()
+				os.chdir(os.path.expanduser(dirname))
+			except OSError as e:
+				click.echo(e, err=True)
 
 		# Comments
 		elif line.strip()[0] == '#':
 			return
 		else:
-			procs.run_line(line, echo_args=self.verbose)
+			try:
+				procs.run_line(line, echo_args=self.verbose)
+			except FileNotFoundError as e:
+				click.echo(f'Command not found: {e.filename}', err=True)

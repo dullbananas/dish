@@ -75,6 +75,8 @@ def run_pipeline(procs):
 
 def run_line(line, echo_args):
 	args = parser.split_args(line)
+	if args == None:
+		return
 	cmds = parser.split_pipeline(args)
 	if echo_args:
 		click.echo(repr([i for i in cmds]))

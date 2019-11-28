@@ -1,8 +1,12 @@
 import shlex
+import click
 
 
 def split_args(line):
-	return shlex.split(line)
+	try:
+		return shlex.split(line)
+	except ValueError as e:
+		click.echo(f'Syntax error: {e}', err=True)
 
 
 def split_pipeline(args):
