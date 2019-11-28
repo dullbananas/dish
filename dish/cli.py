@@ -25,11 +25,14 @@ def main(ctx, verbose, script):
 	if interactive:
 		from prompt_toolkit import PromptSession, ANSI, print_formatted_text
 		from prompt_toolkit.history import FileHistory
+		from prompt_toolkit.lexers import PygmentsLexer
+		from pygments.lexers.shell import BashLexer
 
 		history_path = os.path.expanduser('~/.dish-history')
 		open(history_path, 'a').close()
 		psession = PromptSession(
 			history=FileHistory(history_path),
+			lexer=PygmentsLexer(BashLexer),
 			mouse_support=True,
 		)
 

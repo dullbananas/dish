@@ -29,6 +29,7 @@ setup(
 		'click',
 		'ansicolors',
 		'prompt_toolkit',
+		'Pygments',
 	],
 	python_requires='>=3.7',
 
