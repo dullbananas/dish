@@ -14,6 +14,7 @@ These pages show how Dish works and what features it has.
    :maxdepth: 2
 
    setup
+   config
 
 
 Project Links
