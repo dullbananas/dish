@@ -4,8 +4,9 @@ from . import procs
 
 
 class Interpreter:
-	def __init__(self, ctx):
+	def __init__(self, ctx, verbose):
 		self.ctx = ctx
+		self.verbose = verbose
 
 
 	def feed(self, line):
@@ -30,4 +31,4 @@ class Interpreter:
 		elif line.strip()[0] == '#':
 			return
 		else:
-			procs.run_line(line)
+			procs.run_line(line, echo_args=self.verbose)

@@ -6,16 +6,21 @@ from .interpreter import Interpreter
 
 @click.command()
 @click.version_option(version=__version__, prog_name='Dish shell')
+@click.option('-v/ ', '--verbose/--no-verbose', default=False,
+help='Shows parsed command line arguments before running them')
 @click.argument('script', type=click.File('r'), default='-')
 @click.pass_context # ctx.obj is the Dish object
-def main(ctx, script):
+def main(ctx, verbose, script):
 	'''Runs SCRIPT as a Dish shell script, or runs an interactive shell if it is
 	not specified.
 
 	GitHub repository: https://github.com/dullbananas/dish
 	'''
 	interactive = script.isatty()
-	interpreter = Interpreter(ctx)
+	interpreter = Interpreter(
+		ctx=ctx,
+		verbose=verbose,
+	)
 
 	if interactive:
 		from prompt_toolkit import PromptSession, ANSI, print_formatted_text
