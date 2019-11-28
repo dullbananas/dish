@@ -1,7 +1,6 @@
 from subprocess import Popen, PIPE
 import sys
 import time
-import copy
 from abc import ABC, abstractmethod
 import click
 from . import parser
@@ -75,7 +74,7 @@ def run_pipeline(procs):
 
 def run_line(line, echo_args):
 	args = parser.split_args(line)
-	if args == None:
+	if args is None:
 		return
 	cmds = parser.split_pipeline(args)
 	if echo_args:

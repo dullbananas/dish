@@ -23,7 +23,7 @@ def main(ctx, verbose, script):
 	)
 
 	if interactive:
-		from prompt_toolkit import PromptSession, ANSI, print_formatted_text
+		from prompt_toolkit import PromptSession, ANSI
 		from prompt_toolkit.history import FileHistory
 		from prompt_toolkit.lexers import PygmentsLexer
 		from pygments.lexers.shell import BashLexer
