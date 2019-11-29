@@ -5,6 +5,7 @@
 <h4 align="center">A new Unix shell implemented in Python</h4>
 
 ***
+![Gitter](https://img.shields.io/gitter/room/dullbananas/dish)
 ![Codacy coverage](https://img.shields.io/codacy/coverage/1faac136e1a5459b9141fa6cc03cf0bd)
 ![Codacy grade](https://img.shields.io/codacy/grade/1faac136e1a5459b9141fa6cc03cf0bd)
 ![Maintenance](https://img.shields.io/maintenance/yes/2019)
