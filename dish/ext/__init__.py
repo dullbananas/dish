@@ -1,1 +1,4 @@
-from . import ansicolor
+from . import (
+	ansicolor,
+	prompt_goodies,
+)
