@@ -1,4 +1,4 @@
-<p align="center">
+<h1 align="center">
   <img src="artwork/dish-logo.png" height="128" align="center" />
 </h1>
 
@@ -21,3 +21,8 @@ dish.config['PS1'] = '<color fg="pink">$</color> '
 if __name__ == '__main__':
     dish.run()
 ```
+
+## Project Links
+
+* [Documentation](https://dish.readthedocs.io/en/latest/)
+* [GitHub Repository](https://github.com/dullbananas/dish)
