@@ -30,6 +30,7 @@ setup(
 		'ansicolors',
 		'prompt_toolkit',
 		'Pygments',
+		'dulwich',
 	],
 	python_requires='>=3.7',
 
