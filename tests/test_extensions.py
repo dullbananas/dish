@@ -1,5 +1,6 @@
-from dish import ext
+from dish import ext, __version__ as dish_version
 import os
+import platform
 
 
 def test_handle_color_start_tag():
@@ -12,3 +13,7 @@ def test_handle_color_start_tag():
 
 def test_prompt_goodies():
 	assert ext.prompt_goodies.handle_cwd_tag({}) == os.getcwd()
+	assert ext.prompt_goodies.handle_version_tag({}) == dish_version
+	assert ext.prompt_goodies.handle_platform_tag({
+		'name': 'node',
+	}) == platform.node()

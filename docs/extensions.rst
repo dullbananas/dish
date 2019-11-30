@@ -12,6 +12,7 @@ CSS color names. This tag has the following attributes:
 - ``fg``: Foreground color
 - ``bg``: Background color
 - ``style``: A list of space-separated styles to apply to the text:
+
   - ``bold``
   - ``faint``
   - ``italic``
@@ -38,6 +39,13 @@ These are the tags that it defins:
 
 ``<git-branch/>``
    Returns the active Git branch.
+
+``<platform name="..."/>``
+   Returns something from the ``platform`` module. For example,
+   ``<platform name="node"/>`` returns the value of ``platform.node()``.
+
+``<version/>``
+   Returns the installed version of Dish.
 
 These are the prompt predicates that it defins:
 
