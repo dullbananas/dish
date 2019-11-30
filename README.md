@@ -9,6 +9,9 @@
 ![Codacy coverage](https://img.shields.io/codacy/coverage/1faac136e1a5459b9141fa6cc03cf0bd)
 ![Codacy grade](https://img.shields.io/codacy/grade/1faac136e1a5459b9141fa6cc03cf0bd)
 ![Maintenance](https://img.shields.io/maintenance/yes/2019)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dish)
+![PyPI](https://img.shields.io/pypi/v/dish)
+![PyPI - License](https://img.shields.io/pypi/l/dish)
 ***
 
 Dish is a new Unix shell implemented in Python with Flask-like configuration and extensibility. It is currently in alpha stage of development. It works by having a Python script called "dish" somewhere in `PATH`. This script looks a bit like a single-file Flask application. Here is an example:
