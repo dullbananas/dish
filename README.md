@@ -29,6 +29,16 @@ if __name__ == '__main__':
     dish.run()
 ```
 
+## Installation
+
+Currently, it's not possible to install with Pip yet. To install the master branch:
+
+```console
+$ git clone https://github.com/dullbananas/dish.git
+$ cd dish
+$ python3 setup.py install --user
+```
+
 ## Project Links
 
 * [Documentation](https://dish.readthedocs.io/en/latest/)
