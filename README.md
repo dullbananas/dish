@@ -31,7 +31,13 @@ if __name__ == '__main__':
 
 ## Installation
 
-Currently, it's not possible to install with Pip yet. To install the master branch:
+To install the latest stable version:
+
+```console
+$ pip3 install --user dish
+```
+
+To install the master branch:
 
 ```console
 $ git clone https://github.com/dullbananas/dish.git
