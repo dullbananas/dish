@@ -11,6 +11,26 @@ DEFAULT_CONFIG = {
 
 
 class Dish():
+
+	#: This is a dictionary of functions used to handle start tags in prompts.
+	#: These functions accept one argument, which is a dictionary containing the
+	#: XML tag's attributes. The function must return a string to replace the tag
+	#: with.
+	#:
+	#: For example, when the prompt parser encounters ``<thing value="8">``, it
+	#: will call ``self.start_tag_handlers['thing']({'value': '8'})``.
+	start_tag_handlers = {}
+
+	#: This is just like ``start_tag_handlers``, but it's for end tags, and the
+	#: functions in it accept no arguments. If you want to create a self-closing
+	#: tag, such as ``<cwd/>``, then you only need to add a function to
+	#: ``start_tag_handlers``.
+	end_tag_handlers = {}
+
+	#: This is a dictionary of functions that accept no arguments and return a
+	#: boolean value. These functions are used for ``<if_...>`` tags.
+	prompt_predicates = {}
+
 	def __init__(self):
 		self.config = DEFAULT_CONFIG
 
@@ -46,12 +66,12 @@ class Dish():
 
 
 	def _handle_end_tag(self, name):
-		if self._skip_this_data:
-			return
-		if name in self.end_tag_handlers:
-			self._prompt_result += self.end_tag_handlers[name]()
-		elif name.startswith('if_'):
+		if name.startswith('if_'):
 			self._skip_this_data = False
+		elif self._skip_this_data:
+			return
+		elif name in self.end_tag_handlers:
+			self._prompt_result += self.end_tag_handlers[name]()
 
 
 	def _handle_text(self, data):

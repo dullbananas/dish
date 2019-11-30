@@ -3,7 +3,7 @@ from colors.colors import _color_code as get_color_num, STYLES
 
 def handle_color_start_tag(attrs):
 	# This list will contain the numbers that will be in the returned value. For
-	# example, if this is [30, 31], then the re
+	# example, if this is [30, 31], then the returned value is '\033[30;31m'
 	nums = []
 	if 'fg' in attrs:
 		nums.append(get_color_num(attrs['fg'], 30))

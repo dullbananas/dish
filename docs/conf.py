@@ -9,10 +9,10 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -34,6 +34,7 @@ needs_sphinx = '2.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+	'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -61,6 +62,7 @@ html_favicon = '_static/favicon.ico'
 html_copy_source = False
 
 html_theme_options = {
+	'body_text_align': 'justify',
 	'canonical_url': 'https://dish.readthedocs.io/en/latest/',
 	'touch_icon': '_static/favicon.ico',
 	'github_button': True,

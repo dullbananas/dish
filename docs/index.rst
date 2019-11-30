@@ -26,6 +26,7 @@ These pages contain a reference of extensions and other stuff
    :maxdepth: 2
 
    extensions
+   ext_interface
 
 
 Project Links
