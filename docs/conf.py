@@ -21,9 +21,12 @@ project = 'Dish'
 copyright = '2019, Dull Bananas'
 author = 'Dull Bananas'
 
+version = '0.0'
 # The full version, including alpha/beta/rc tags
 release = '0.0.0'
 
+
+needs_sphinx = '2.0'
 
 # -- General configuration ---------------------------------------------------
 
@@ -53,3 +56,15 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_favicon = '_static/favicon.ico'
+html_copy_source = False
+
+html_theme_options = {
+	'canonical_url': 'https://dish.readthedocs.io/en/latest/',
+	'touch_icon': '_static/favicon.ico',
+	'github_button': True,
+	'github_user': 'dullbananas',
+	'github_repo': 'dish',
+	'sidebar_collapse': False,
+}
