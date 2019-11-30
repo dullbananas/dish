@@ -42,3 +42,10 @@ prompt by using CSS color names. Here is an example::
    Due to `a bug in prompt_toolkit
    <https://github.com/prompt-toolkit/python-prompt-toolkit/issues/1011>`_, some
    color names do not work and will cause a ``ValueError``.
+
+There is also a feature called prompt predicates. This allows you to only display
+part of a prompt if a certain condition is met. For example, the
+``prompt_goodies`` extension has one called "git" that returns true if you are
+currently in a Git repository. Here is an example of how to use it::
+
+   dish.config['PS1'] = '<if_git>We\'re in a Git repository </if_git> $ '
