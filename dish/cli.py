@@ -39,11 +39,21 @@ def main(ctx, verbose, script):
 			mouse_support=True,
 		)
 
+		gprompt = ctx.obj.generate_prompt
+
 		while True:
-			prompt = ANSI(ctx.obj.generate_prompt('PS1'))
-			line = psession.prompt(prompt)
-			interpreter.feed(line)
+			prompt1 = ANSI(gprompt('PS1'))
+			prompt2 = ANSI(gprompt('PS2'))
+			line = psession.prompt(prompt1)
+			needs_more = interpreter.feed(line)
+			while needs_more:
+				line = psession.prompt(prompt2)
+				needs_more = interpreter.feed(line)
 
 	else:
 		while True:
-			interpreter.feed(script.readline())
+			line = script.readline()
+			if line == '':
+				break
+			else:
+				interpreter.feed(line[:-1])

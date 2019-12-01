@@ -5,3 +5,10 @@
 echo "Hello world"
 echo "These are the contents of the current directory:"
 ls --color
+
+#================================================================================
+This is a
+multi-
+line
+comment.
+================================================================================#

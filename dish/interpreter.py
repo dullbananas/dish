@@ -7,15 +7,24 @@ class Interpreter:
 	def __init__(self, ctx, verbose):
 		self.ctx = ctx
 		self.verbose = verbose
+		self.lines = []
 
 
 	def feed(self, line):
+		if len(self.lines) > 0:
+			# Multi-line comments
+			if self.lines[0].startswith('#==') and line.endswith('==#'):
+				self.lines = []
+				return False
+
+			return True
+
 		# Handle exit command or EOF
 		if line == 'exit':
 			self.ctx.exit()
 		# Blank lines
 		elif line.strip() == '':
-			return
+			pass
 
 		# Print debug information
 		elif line == 'debug':
@@ -30,11 +39,21 @@ class Interpreter:
 			except OSError as e:
 				click.echo(e, err=True)
 
-		# Comments
+		# Start of multiline comments
+		elif line.startswith('#=='):
+			self.lines.append(line)
+			return True
+
+		# Single-line comments
 		elif line.strip()[0] == '#':
-			return
+			pass
+
+		# Normal commands
 		else:
 			try:
 				procs.run_line(line, echo_args=self.verbose)
 			except FileNotFoundError as e:
 				click.echo(f'Command not found: {e.filename}', err=True)
+
+		self.lines = []
+		return False
