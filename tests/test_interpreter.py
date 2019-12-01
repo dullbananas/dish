@@ -1,5 +1,4 @@
 import os
-import time
 
 
 def test_comments(interpreter, capfd):
