@@ -15,6 +15,7 @@ These pages show how Dish works and what features it has.
 
    setup
    config
+   features
 
 
 Reference
