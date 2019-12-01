@@ -11,6 +11,9 @@ running it with ``--help`` and parsing its output. In other words, Dish provides
 partial auto suggesion support for all commands without any configuration
 needed.
 
+.. versionadded:: 0.1
+   Options are parsed from ``--help`` output.
+
 
 Aliases
 -------
