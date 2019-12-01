@@ -18,10 +18,12 @@ def process_cmd(args, called_self=False):
 	return result
 
 
-def split_args(line):
+def split_args(line, echo_errors=True):
 	try:
 		return shlex.split(line)
 	except ValueError as e:
+		if not echo_errors:
+			return []
 		click.echo(f'Syntax error: {e}', err=True)
 
 
