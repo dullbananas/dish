@@ -51,7 +51,8 @@ class Interpreter:
 		# Normal commands
 		else:
 			try:
-				procs.run_line(line, echo_args=self.verbose)
+				with self.ctx:
+					procs.run_line(line, echo_args=self.verbose)
 			except FileNotFoundError as e:
 				click.echo(f'Command not found: {e.filename}', err=True)
 

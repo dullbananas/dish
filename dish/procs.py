@@ -58,11 +58,11 @@ def run_pipeline(procs):
 			proc.run(stdin=None, stdout=None, stderr=None)
 		# First process
 		elif i == 0:
-			proc.run(stdin=sys.stdin, stdout=PIPE, stderr=sys.stderr)
+			proc.run(stdin=None, stdout=PIPE, stderr=sys.stderr)
 		# Last process
 		elif i == len(procs) - 1:
 			previous = procs[i-1]
-			proc.run(stdin=previous.stdout, stdout=sys.stdout, stderr=sys.stderr)
+			proc.run(stdin=previous.stdout, stdout=None, stderr=sys.stderr)
 		# Processes in the middle
 		else:
 			previous = procs[i-1]

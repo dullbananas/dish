@@ -3,6 +3,9 @@ import click
 
 
 def process_cmd(args, called_self=False):
+	if len(args) == 0:
+		return args
+
 	result = args
 
 	# Replace aliases
