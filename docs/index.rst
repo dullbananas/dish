@@ -1,6 +1,8 @@
 Dish Documentation
 ==================
 
+Version |release|
+
 Welcome to Dish's documentation. Dish is a new Unix shell that is currently in
 early development.
 
