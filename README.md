@@ -51,5 +51,4 @@ $ python3 setup.py install --user
 ## Project Links
 
   * [Documentation](https://dish.readthedocs.io/en/latest/)
-
   * [GitHub Repository](https://github.com/dullbananas/dish)
