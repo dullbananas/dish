@@ -28,6 +28,7 @@ def main(ctx, verbose, script):
 		from prompt_toolkit.lexers import PygmentsLexer
 		from prompt_toolkit.auto_suggest import ThreadedAutoSuggest
 		from .autosuggest import DishSuggest
+		from .syntax_highlighting import DishHighlight
 		from pygments.lexers.shell import BashLexer
 
 		history_path = os.path.expanduser('~/.dish-history')
@@ -35,7 +36,7 @@ def main(ctx, verbose, script):
 		psession = PromptSession(
 			auto_suggest=ThreadedAutoSuggest(DishSuggest(ctx=ctx)),
 			history=FileHistory(history_path),
-			lexer=PygmentsLexer(BashLexer),
+			lexer=DishHighlight(interpreter=interpreter),
 			mouse_support=True,
 		)
 

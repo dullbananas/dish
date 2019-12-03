@@ -8,13 +8,15 @@ class Interpreter:
 		self.ctx = ctx
 		self.verbose = verbose
 		self.lines = []
+		self.in_comment = False
 
 
 	def feed(self, line):
 		if len(self.lines) > 0:
-			# Multi-line comments
+			# End of multi-line comment
 			if self.lines[0].startswith('#==') and line.endswith('==#'):
 				self.lines = []
+				self.in_comment = False
 				return False
 
 			return True
@@ -42,6 +44,7 @@ class Interpreter:
 		# Start of multiline comments
 		elif line.startswith('#=='):
 			self.lines.append(line)
+			self.in_comment = True
 			return True
 
 		# Single-line comments
