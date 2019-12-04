@@ -31,6 +31,14 @@ def split_args(line, echo_errors=True):
 
 
 def split_pipeline(args):
+	# to prevent errors
+	if len(args) == 0:
+		return []
+	if args[0] == '|':
+		del args[0]
+	if args[-1] == '|':
+		del args[-1]
+
 	cmd = []
 	for arg in args:
 		if arg == '|':
