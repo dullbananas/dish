@@ -2,6 +2,7 @@ from . import cli
 from dulwich.repo import Repo
 from dulwich.errors import NotGitRepository
 from xml.parsers.expat import ParserCreate
+import os
 
 
 DEFAULT_CONFIG = {
@@ -91,9 +92,18 @@ class Dish():
 		return self._prompt_result
 
 
+	def _get_current_repo(self, path=None):
+		if path == None:
+			path = os.getcwd()
+		try:
+			return Repo(path)
+		except NotGitRepository:
+			if path == '/':
+				return None
+			else:
+				return self._get_current_repo(path=os.path.dirname(path))
+
+
 	@property
 	def current_repo(self):
-		try:
-			return Repo('.')
-		except NotGitRepository:
-			return None
+		return self._get_current_repo()
