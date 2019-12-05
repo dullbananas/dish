@@ -31,6 +31,7 @@ These pages contain a reference of extensions and other stuff
 
    extensions
    ext_interface
+   api
 
 
 Project Links

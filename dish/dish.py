@@ -13,6 +13,12 @@ DEFAULT_CONFIG = {
 
 
 class Dish():
+	'''This is the main class. It holds configuration, extensions, and more. It
+	works a bit similar to Flask's ``Flask`` class.
+
+	:property current_repo: Holds the current Git repository, or ``None`` if you
+	                        are not in a repository.
+	'''
 
 	#: This is a dictionary of functions used to handle start tags in prompts.
 	#: These functions accept one argument, which is a dictionary containing the
@@ -42,18 +48,34 @@ class Dish():
 
 
 	def run(self):
+		'''This method runs the shell. In your shell configuration script, this
+		should be protected using an ``if __name__ == '__main__'`` condition.
+		'''
 		cli.main.main(obj=self)
 
 
 	def config_from_dict(self, d):
+		'''This method adds the configuration values in a dictionary to the
+		current configuration.
+
+		:param d: A dictionary with configuration values.
+		'''
 		self.config = {**self.config, **d}
 
 
 	def reset_config(self):
+		'''This resets the configuration to the default values.
+		'''
 		self.config = DEFAULT_CONFIG
 
 
 	def register_extension(self, module, **kwargs):
+		'''This initializes an extension module.
+
+		:param module: A module with a ``register_extension`` function.
+		:param kwargs: Additional arguments to pass to the ``register_extension``
+		               function of the module.
+		'''
 		module.register_extension(self, **kwargs)
 
 
@@ -82,6 +104,10 @@ class Dish():
 
 
 	def generate_prompt(self, prompt_type):
+		'''Generates the prompt string.
+
+		:param prompt_type: Can be either ``PS1`` or ``PS2``.
+		'''
 		self._prompt_result = ''
 		self._skip_this_data = False # This is set to True by <if_...> tags if the condition is False, and tells _handle_text to ignore the stuff
 		parser = ParserCreate()

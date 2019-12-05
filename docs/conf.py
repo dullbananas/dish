@@ -21,9 +21,9 @@ project = 'Dish'
 copyright = '2019, Dull Bananas'
 author = 'Dull Bananas'
 
-version = '0.0'
+version = '0.1'
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
+release = '0.1.0'
 
 
 needs_sphinx = '2.0'
@@ -68,5 +68,5 @@ html_theme_options = {
 	'github_button': True,
 	'github_user': 'dullbananas',
 	'github_repo': 'dish',
-	'sidebar_collapse': False,
+	'sidebar_collapse': True,
 }
