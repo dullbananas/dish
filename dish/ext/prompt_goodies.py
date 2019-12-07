@@ -33,6 +33,11 @@ def handle_time_tag(attrs):
 	return time.strftime(attrs['format'])
 
 
+def handle_duration_tag(attrs):
+	round_num = int(attrs.get('round', '0'))
+	return round(ctx().obj.previous_cmd_duration, round_num)
+
+
 def register_extension(obj):
 	obj.start_tag_handlers['cwd'] = handle_cwd_tag
 	obj.start_tag_handlers['version'] = handle_version_tag
@@ -40,3 +45,4 @@ def register_extension(obj):
 	obj.start_tag_handlers['git-branch'] = handle_git_branch_tag
 	obj.prompt_predicates['git'] = git_predicate
 	obj.start_tag_handlers['time'] = handle_time_tag
+	obj.start_tag_handlers['duration'] = handle_duration_tag

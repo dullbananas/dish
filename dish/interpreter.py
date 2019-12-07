@@ -1,4 +1,5 @@
 import os
+import time
 import click
 from . import procs
 
@@ -21,6 +22,7 @@ class Interpreter:
 
 			return True
 
+		start_time = time.time()
 		# Handle exit command or EOF
 		if line == 'exit':
 			self.ctx.exit()
@@ -45,6 +47,7 @@ class Interpreter:
 		elif line.startswith('#=='):
 			self.lines.append(line)
 			self.in_comment = True
+			self.ctx.obj.previous_cmd_duration = 0
 			return True
 
 		# Single-line comments
@@ -60,4 +63,5 @@ class Interpreter:
 				click.echo(f'Command not found: {e.filename}', err=True)
 
 		self.lines = []
+		self.ctx.obj.previous_cmd_duration = time.time() - start_time
 		return False

@@ -46,6 +46,8 @@ class Dish():
 		self.end_tag_handlers = {}
 		self.prompt_predicates = {}
 
+		self.previous_cmd_duration = 0
+
 
 	def run(self):
 		'''This method runs the shell. In your shell configuration script, this
@@ -83,7 +85,7 @@ class Dish():
 		if self._skip_this_data:
 			return
 		if name in self.start_tag_handlers:
-			self._prompt_result += self.start_tag_handlers[name](attrs)
+			self._prompt_result += str(self.start_tag_handlers[name](attrs))
 		elif name.startswith('if_'):
 			if not self.prompt_predicates[name[3:]]():
 				self._skip_this_data = True
@@ -95,7 +97,7 @@ class Dish():
 		elif self._skip_this_data:
 			return
 		elif name in self.end_tag_handlers:
-			self._prompt_result += self.end_tag_handlers[name]()
+			self._prompt_result += str(self.end_tag_handlers[name]())
 
 
 	def _handle_text(self, data):
