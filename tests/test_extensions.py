@@ -1,6 +1,7 @@
 from dish import ext, __version__ as dish_version
 import os
 import platform
+import time
 
 
 def test_handle_color_start_tag():
@@ -17,3 +18,4 @@ def test_prompt_goodies():
 	assert ext.prompt_goodies.handle_platform_tag({
 		'name': 'node',
 	}) == platform.node()
+	assert ext.prompt_goodies.handle_time_tag({'format': '%I'}) == time.strftime('%I')
