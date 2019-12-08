@@ -1,5 +1,6 @@
 import shlex
 import click
+import os
 
 
 def process_cmd(args, called_self=False):
@@ -17,6 +18,11 @@ def process_cmd(args, called_self=False):
 				result = substitution
 			else:
 				result = substitution + result[1:]
+
+	# Expand ~ (user dir)
+	for i, arg in enumerate(result):
+		if arg.startswith('~'):
+			result[i] = os.path.expanduser(arg)
 
 	return result
 

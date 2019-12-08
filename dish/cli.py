@@ -27,14 +27,17 @@ def main(ctx, verbose, script):
 		from prompt_toolkit.history import FileHistory
 		from prompt_toolkit.lexers import PygmentsLexer
 		from prompt_toolkit.auto_suggest import ThreadedAutoSuggest
-		from .autosuggest import DishSuggest
+		from .autosuggest import DishSuggest, CombinedSuggest, FileSuggest
 		from .syntax_highlighting import DishHighlight
 		from pygments.lexers.shell import BashLexer
 
 		history_path = os.path.expanduser('~/.dish-history')
 		open(history_path, 'a').close()
 		psession = PromptSession(
-			auto_suggest=ThreadedAutoSuggest(DishSuggest(ctx=ctx)),
+			auto_suggest=ThreadedAutoSuggest(CombinedSuggest(objects=[
+				DishSuggest(ctx=ctx),
+				FileSuggest(ctx=ctx),
+			])),
 			history=FileHistory(history_path),
 			lexer=DishHighlight(interpreter=interpreter),
 			mouse_support=True,
