@@ -39,6 +39,10 @@ class Dish():
 	#: boolean value. These functions are used for ``<if_...>`` tags.
 	prompt_predicates = {}
 
+	#: This holds the amount of seconds it took to run the previous command. The
+	#: initial value is 0.
+	previous_cmd_duration = 0
+
 	def __init__(self):
 		self.config = DEFAULT_CONFIG
 
