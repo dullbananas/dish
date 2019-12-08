@@ -15,6 +15,8 @@ class DishSuggest(AutoSuggest):
 		# Get name of command
 		with self.ctx:
 			cmds = [i for i in split_pipeline(split_args(document.current_line, echo_errors=False))]
+		if len(cmds) == 0:
+			return Suggestion(text='')
 		if len(cmds[0]) == 0:
 			return Suggestion(text='')
 		cmdname = cmds[-1][0]
