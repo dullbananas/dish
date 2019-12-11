@@ -60,3 +60,6 @@ These are the prompt predicates that it defins:
 
 ``git``
    Returns ``True`` if the current working directory is in a Git repository.
+
+.. versionchanged:: 0.1
+   Git-related stuff now works with subdirectories in a repository.
