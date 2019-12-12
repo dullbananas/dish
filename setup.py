@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from setuptools import setup
+from setuptools import setup, find_packages
 import re
 
 with open('README.md', 'r') as f:
@@ -24,7 +24,7 @@ setup(
 
 	license='MIT',
 
-	packages=['dish'],
+	packages=find_packages(),
 	install_requires=[
 		'click',
 		'ansicolors',
